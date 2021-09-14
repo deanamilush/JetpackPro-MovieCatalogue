@@ -1,4 +1,4 @@
-package com.dean.moviecatalogue
+package com.dean.moviecatalogue.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

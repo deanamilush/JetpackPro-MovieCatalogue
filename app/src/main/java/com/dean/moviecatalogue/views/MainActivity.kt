@@ -1,8 +1,11 @@
-package com.dean.moviecatalogue
+package com.dean.moviecatalogue.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import com.dean.moviecatalogue.viewmodel.MainViewModel
+import com.dean.moviecatalogue.adapter.SectionsPagerAdapter
+import com.dean.moviecatalogue.viewmodel.ViewModelFactory
 import com.dean.moviecatalogue.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

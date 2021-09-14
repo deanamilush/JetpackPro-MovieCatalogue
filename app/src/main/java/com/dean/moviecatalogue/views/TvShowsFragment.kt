@@ -1,4 +1,4 @@
-package com.dean.moviecatalogue
+package com.dean.moviecatalogue.views
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,7 +9,12 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dean.moviecatalogue.data.source.remote.api.ApiHelper.TYPE_TVSHOW
+import com.dean.moviecatalogue.*
+import com.dean.moviecatalogue.adapter.ListAdapter
+import com.dean.moviecatalogue.source.api.ApiHelper.TYPE_TVSHOW
+import com.dean.moviecatalogue.model.ModelData
+import com.dean.moviecatalogue.viewmodel.MainViewModel
+import com.dean.moviecatalogue.viewmodel.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_tv_shows.*
 
 class TvShowsFragment : Fragment(), ListAdapter.DataCallback {

@@ -2,58 +2,96 @@ package com.dean.moviecatalogue
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso
-import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions
-import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.swipeLeft
 import androidx.test.espresso.assertion.ViewAssertions
-import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
-import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
-import androidx.test.ext.junit.rules.ActivityScenarioRule
+import androidx.test.rule.ActivityTestRule
+import com.dean.moviecatalogue.model.EspressoIdlingResource
+import com.dean.moviecatalogue.views.MainActivity
+import org.junit.After
+import org.junit.Before
 import org.junit.Test
 import org.junit.Rule
-import kotlin.concurrent.thread
 
 class MainActivityTest {
 
-    private val dummyMovie = DataDummy.generateDummyMovies()
-    private val dummyTvShow = DataDummy.generateDummyTvShows()
-
     @get:Rule
-    var activityRule = ActivityScenarioRule(MainActivity::class.java)
+    var activityRule = ActivityTestRule(MainActivity::class.java)
+
+    @Before
+    fun setUp() {
+        IdlingRegistry.getInstance().register(EspressoIdlingResource.espressoTestIdlingResource)
+    }
+
+    @After
+    fun tearDown() {
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.espressoTestIdlingResource)
+    }
 
     @Test
-    fun loadMovie() {
-        onView(withId(R.id.rv_movies)) .check(matches(isDisplayed()))
-        onView(withId(R.id.rv_movies)) .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(dummyMovie.size))
+    fun loadMovieAndTvShow() {
+        Espresso.onView(withId(R.id.rv_movies))
+            .check(ViewAssertions.matches(isDisplayed()))
+        Espresso.onView(withId(R.id.rv_movies))
+            .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(5))
+
+        Espresso.onView(withText(R.string.tv_shows)).perform(ViewActions.click())
+        Espresso.onView(withId(R.id.rv_tv_shows))
+            .check(ViewAssertions.matches(isDisplayed()))
+        Espresso.onView(withId(R.id.rv_tv_shows))
+            .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(5))
+
+        Espresso.onView(withText(R.string.movies)).perform(ViewActions.click())
     }
 
     @Test
     fun detailMovie() {
-        onView(withId(R.id.rv_movies)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
-        onView(withId(R.id.detail_poster)).check(matches(isDisplayed()))
-        onView(withId(R.id.detail_title)).check(matches(isDisplayed()))
-        onView(withId(R.id.detail_description)).check(matches(isDisplayed()))
+        Espresso.onView(withId(R.id.rv_movies))
+            .check(ViewAssertions.matches(isDisplayed()))
+        Espresso.onView(withId(R.id.rv_movies))
+            .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(5))
+        Espresso.onView(withId(R.id.rv_movies))
+            .perform(
+                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(5,
+                    ViewActions.click()
+                ))
+
+        Espresso.onView(withId(R.id.img_detail_hightlight))
+            .check(ViewAssertions.matches(isDisplayed()))
+        Espresso.onView(withId(R.id.img_detail_poster))
+            .check(ViewAssertions.matches(isDisplayed()))
+        Espresso.onView(withId(R.id.tv_detail_name))
+            .check(ViewAssertions.matches(isDisplayed()))
+        Espresso.onView(withId(R.id.tv_detail_desc))
+            .check(ViewAssertions.matches(isDisplayed()))
+
+        Espresso.pressBack()
     }
 
     @Test
-    fun loadTvShows() {
-        onView(withId(R.id.view_pager)).perform(
-            swipeLeft())
-        onView(withId(R.id.rv_tv_shows)).check(matches(isDisplayed()))
-        onView(withId(R.id.rv_tv_shows)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(dummyTvShow.size))
-    }
+    fun detailTvShow() {
+        Espresso.onView(withText(R.string.tv_shows)).perform(ViewActions.click())
+        Espresso.onView(withId(R.id.rv_tv_shows))
+            .check(ViewAssertions.matches(isDisplayed()))
+        Espresso.onView(withId(R.id.rv_tv_shows))
+            .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(5))
+        Espresso.onView(withId(R.id.rv_tv_shows))
+            .perform(
+                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(5,
+                    ViewActions.click()
+                ))
 
-    @Test
-    fun detailTvShows() {
-        onView(withId(R.id.view_pager)).perform(
-            swipeLeft(), click())
-        onView(withId(R.id.rv_tv_shows)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
-        onView(withId(R.id.detail_poster)).check(matches(isDisplayed()))
-        onView(withId(R.id.detail_title)).check(matches(isDisplayed()))
-        onView(withId(R.id.detail_description)).check(matches(isDisplayed()))
-    }
+        Espresso.onView(withId(R.id.img_detail_hightlight))
+            .check(ViewAssertions.matches(isDisplayed()))
+        Espresso.onView(withId(R.id.img_detail_poster))
+            .check(ViewAssertions.matches(isDisplayed()))
+        Espresso.onView(withId(R.id.tv_detail_name))
+            .check(ViewAssertions.matches(isDisplayed()))
+        Espresso.onView(withId(R.id.tv_detail_desc))
+            .check(ViewAssertions.matches(isDisplayed()))
 
+        Espresso.pressBack()
+    }
 }

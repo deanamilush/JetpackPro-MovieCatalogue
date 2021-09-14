@@ -1,8 +1,8 @@
 package com.dean.moviecatalogue.data
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.dean.moviecatalogue.DataDummy
-import com.dean.moviecatalogue.RemoteDataSource
+import com.dean.moviecatalogue.model.DataDummy
+import com.dean.moviecatalogue.source.remote.RemoteDataSource
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.doAnswer
 import com.nhaarman.mockitokotlin2.eq

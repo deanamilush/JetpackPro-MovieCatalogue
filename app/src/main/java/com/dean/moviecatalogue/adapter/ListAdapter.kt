@@ -1,14 +1,14 @@
-package com.dean.moviecatalogue
+package com.dean.moviecatalogue.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.dean.moviecatalogue.data.source.remote.api.ApiHelper.API_IMAGE_ENDPOINT
-import com.dean.moviecatalogue.data.source.remote.api.ApiHelper.ENDPOINT_POSTER_SIZE_W185
-import com.dean.moviecatalogue.data.source.remote.api.ApiHelper.setImageWithGlide
+import com.dean.moviecatalogue.R
+import com.dean.moviecatalogue.source.api.ApiHelper.API_IMAGE_ENDPOINT
+import com.dean.moviecatalogue.source.api.ApiHelper.ENDPOINT_POSTER_SIZE_W185
+import com.dean.moviecatalogue.source.api.ApiHelper.setImageWithGlide
+import com.dean.moviecatalogue.model.ModelData
 import kotlinx.android.synthetic.main.items.view.*
 import java.util.ArrayList
 
@@ -51,7 +51,7 @@ class ListAdapter(private val callback: DataCallback) :
 
     override fun getItemCount(): Int = listData.size
 
-    override fun onBindViewHolder(holder: ListAdapter.ListViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         holder.bind(listData[position])
     }
 

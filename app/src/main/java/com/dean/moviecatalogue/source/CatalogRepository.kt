@@ -1,14 +1,17 @@
-package com.dean.moviecatalogue
+package com.dean.moviecatalogue.source
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.dean.moviecatalogue.data.source.remote.api.MovieResponse
-import com.dean.moviecatalogue.data.source.remote.api.TvShowResponse
+import com.dean.moviecatalogue.response.MovieResponse
+import com.dean.moviecatalogue.response.TvShowResponse
+import com.dean.moviecatalogue.model.ModelData
+import com.dean.moviecatalogue.source.remote.RemoteDataSource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class CatalogRepository private constructor(private val remoteDataSource: RemoteDataSource) : CatalogDataSource {
+class CatalogRepository private constructor(private val remoteDataSource: RemoteDataSource) :
+    CatalogDataSource {
 
     companion object {
         @Volatile

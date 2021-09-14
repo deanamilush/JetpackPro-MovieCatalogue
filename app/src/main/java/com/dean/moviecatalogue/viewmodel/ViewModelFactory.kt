@@ -1,7 +1,9 @@
-package com.dean.moviecatalogue
+package com.dean.moviecatalogue.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.dean.moviecatalogue.source.CatalogRepository
+import com.dean.moviecatalogue.model.Injection
 
 class ViewModelFactory private constructor(private val mCatalogRepository: CatalogRepository): ViewModelProvider.NewInstanceFactory() {
 

@@ -1,8 +1,9 @@
-package com.dean.moviecatalogue
+package com.dean.moviecatalogue.source.remote
 
-import com.dean.moviecatalogue.data.source.remote.api.ApiClient
-import com.dean.moviecatalogue.data.source.remote.api.MovieResponse
-import com.dean.moviecatalogue.data.source.remote.api.TvShowResponse
+import com.dean.moviecatalogue.source.api.ApiClient
+import com.dean.moviecatalogue.response.MovieResponse
+import com.dean.moviecatalogue.response.TvShowResponse
+import com.dean.moviecatalogue.model.EspressoIdlingResource
 import retrofit2.await
 
 class RemoteDataSource {

@@ -1,21 +1,19 @@
-package com.dean.moviecatalogue
+package com.dean.moviecatalogue.views
 
-import android.graphics.Color
-import android.graphics.Movie
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.RequestOptions
-import com.dean.moviecatalogue.data.source.remote.api.ApiHelper.API_IMAGE_ENDPOINT
-import com.dean.moviecatalogue.data.source.remote.api.ApiHelper.ENDPOINT_POSTER_SIZE_W185
-import com.dean.moviecatalogue.data.source.remote.api.ApiHelper.ENDPOINT_POSTER_SIZE_W780
-import com.dean.moviecatalogue.data.source.remote.api.ApiHelper.TYPE_MOVIE
-import com.dean.moviecatalogue.data.source.remote.api.ApiHelper.TYPE_TVSHOW
-import com.dean.moviecatalogue.data.source.remote.api.ApiHelper.setImageWithGlide
-import com.dean.moviecatalogue.databinding.ActivityDetailBinding
+import com.dean.moviecatalogue.viewmodel.DetailViewModel
+import com.dean.moviecatalogue.model.ModelData
+import com.dean.moviecatalogue.R
+import com.dean.moviecatalogue.viewmodel.ViewModelFactory
+import com.dean.moviecatalogue.source.api.ApiHelper.API_IMAGE_ENDPOINT
+import com.dean.moviecatalogue.source.api.ApiHelper.ENDPOINT_POSTER_SIZE_W185
+import com.dean.moviecatalogue.source.api.ApiHelper.ENDPOINT_POSTER_SIZE_W780
+import com.dean.moviecatalogue.source.api.ApiHelper.TYPE_MOVIE
+import com.dean.moviecatalogue.source.api.ApiHelper.TYPE_TVSHOW
+import com.dean.moviecatalogue.source.api.ApiHelper.setImageWithGlide
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.content_detail.*
 import kotlinx.android.synthetic.main.items.*
@@ -37,8 +35,6 @@ class DetailActivity : AppCompatActivity() {
             factory
         )[DetailViewModel::class.java]
 
-     //   setupToolbar()
-
         val id = intent.getIntExtra(EXTRA_DATA, 0)
         val type = intent.getStringExtra(EXTRA_TYPE)
 
@@ -59,8 +55,6 @@ class DetailActivity : AppCompatActivity() {
                 }
             })
         }
-
-
     }
 
     private fun displayData(data: ModelData) {
@@ -80,11 +74,6 @@ class DetailActivity : AppCompatActivity() {
 
     }
 
-    /*private fun setupToolbar() {
-        setSupportActionBar(detail_toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        collapsing_toolbar.setExpandedTitleColor(Color.TRANSPARENT)
-    }*/
 
     private fun setupToolbarTitle(title: String) {
         supportActionBar?.title = title

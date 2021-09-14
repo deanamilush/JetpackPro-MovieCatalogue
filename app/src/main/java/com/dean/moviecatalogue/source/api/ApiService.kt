@@ -1,6 +1,9 @@
-package com.dean.moviecatalogue.data.source.remote.api
+package com.dean.moviecatalogue.source.api
 
 import com.dean.moviecatalogue.BuildConfig
+import com.dean.moviecatalogue.response.ListResponse
+import com.dean.moviecatalogue.response.MovieResponse
+import com.dean.moviecatalogue.response.TvShowResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

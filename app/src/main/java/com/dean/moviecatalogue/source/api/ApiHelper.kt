@@ -1,4 +1,4 @@
-package com.dean.moviecatalogue.data.source.remote.api
+package com.dean.moviecatalogue.source.api
 
 import android.content.Context
 import android.widget.ImageView

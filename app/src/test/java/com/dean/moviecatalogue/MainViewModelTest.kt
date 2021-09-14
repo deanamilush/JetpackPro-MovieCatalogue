@@ -3,12 +3,14 @@ package com.dean.moviecatalogue
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import com.dean.moviecatalogue.model.DataDummy
+import com.dean.moviecatalogue.model.ModelData
+import com.dean.moviecatalogue.source.CatalogRepository
+import com.dean.moviecatalogue.viewmodel.MainViewModel
 import com.nhaarman.mockitokotlin2.verify
 import junit.framework.Assert
-import junit.framework.TestCase
 import org.junit.Test
 
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
 import org.junit.runner.RunWith

@@ -1,7 +1,7 @@
-package com.dean.moviecatalogue
+package com.dean.moviecatalogue.model
 
-import com.dean.moviecatalogue.data.source.remote.api.MovieResponse
-import com.dean.moviecatalogue.data.source.remote.api.TvShowResponse
+import com.dean.moviecatalogue.response.MovieResponse
+import com.dean.moviecatalogue.response.TvShowResponse
 
 object DataDummy {
     fun generateDataMovieDummyResponse(): List<MovieResponse> {

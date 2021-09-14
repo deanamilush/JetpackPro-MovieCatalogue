@@ -1,4 +1,4 @@
-package com.dean.moviecatalogue.data.source.remote.api
+package com.dean.moviecatalogue.source.api
 
 import com.dean.moviecatalogue.BuildConfig
 import okhttp3.OkHttpClient
