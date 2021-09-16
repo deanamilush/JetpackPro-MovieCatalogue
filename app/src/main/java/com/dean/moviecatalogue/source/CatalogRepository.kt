@@ -2,9 +2,10 @@ package com.dean.moviecatalogue.source
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.dean.moviecatalogue.response.MovieResponse
-import com.dean.moviecatalogue.response.TvShowResponse
+import com.dean.moviecatalogue.source.api.MovieResponse
+import com.dean.moviecatalogue.source.api.TvShowResponse
 import com.dean.moviecatalogue.model.ModelData
+import com.dean.moviecatalogue.source.remote.CatalogDataSource
 import com.dean.moviecatalogue.source.remote.RemoteDataSource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

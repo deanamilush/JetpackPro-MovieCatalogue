@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.dean.moviecatalogue.R
-import com.dean.moviecatalogue.views.MoviesFragment
-import com.dean.moviecatalogue.views.TvShowsFragment
+import com.dean.moviecatalogue.views.movies.MoviesFragment
+import com.dean.moviecatalogue.views.tvshows.TvShowsFragment
 
 class SectionsPagerAdapter(private val mContext: Context, fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
